@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: DMS Signup
-Version: 0.1
+Plugin Name: PageLines Signup
+Version: 0.2
 PageLines: true
 Section: true
 Class Name: DMS_Signup

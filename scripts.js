@@ -6,6 +6,16 @@
 
 	jQuery(document).ready(function() {
 
+		var text = $(".dms-signup .drag-well h2").text().length || 0
+		if( text > 15 && text < 25 ) {
+			$(".dms-signup .drag-well h2").fitText(1.5, { maxFontSize: '45px' });
+		} else if( text > 25 && text < 35 ) {
+			$(".dms-signup .drag-well h2").fitText(1.7, { maxFontSize: '45px' });
+		} else if( text > 35 ) {
+			$(".dms-signup .drag-well h2").fitText(2.1, { maxFontSize: '45px' });
+		}
+
+
 		$('.dms-signup').each(function(){
 			var signUp 		= $(this)
 			,	well 		= signUp.find('.drag-well')

@@ -1,0 +1,153 @@
+/*
+	 CSS-Tricks Example
+	 by Chris Coyier
+	 http://css-tricks.com
+*/
+
+.pl-black,
+.pl-dark-img,
+.pl-grey{
+	.drag-slider{
+		.drag-well{
+			background: rgba(255,255,255,.1);
+		}
+		h2{
+			background: -moz-linear-gradient(left, rgba(255,255,255,.4), 0.4, rgba(255,255,255,.4), 0.5, white, 0.6, rgba(255,255,255,.4), rgba(255,255,255,.4));
+			background: -webkit-gradient(linear,left top,right top,color-stop(0, rgba(255,255,255,.4)),color-stop(0.4, rgba(255,255,255,.4)),color-stop(0.5, white),color-stop(0.6, rgba(255,255,255,.4)),color-stop(1, rgba(255,255,255,.4)));
+				-moz-background-clip: text;
+				-webkit-background-clip: text;
+				-moz-text-fill-color: transparent;
+				-webkit-text-fill-color: transparent;
+			#slider{
+
+				border: 2px solid #fff;
+				color: #fff;
+				&:hover,
+				&:active{
+					background: rgba(255,255,255,.1);
+				}
+			}
+		}
+	}
+	 .get-pl-email{
+		border: 1px solid #fff;
+	}
+}
+
+.drag-slider{
+
+	.drag-well{
+		padding: 3px 5px;
+		background: rgba(0,0,0,.05);
+		border-radius: 10px;
+		margin: 0 auto;
+		max-width: 350px;
+		text-align: left;
+	}
+	h2 {
+		font-family: 'Open Sans', 'helvetica';
+		font-weight: 500;
+		font-size: 35px;
+		line-height: 60px;
+		letter-spacing: -1px;
+		text-align: left;
+		margin: 0;
+		background: -moz-linear-gradient(left, rgba(0,0,0,.4), 0.4, rgba(0,0,0,.4), 0.5, rgba(0,0,0,.8), 0.6, rgba(0,0,0,.4), rgba(0,0,0,.4));
+		background: -webkit-gradient(linear,left top,right top,color-stop(0, rgba(0,0,0,.4)),color-stop(0.4, rgba(0,0,0,.4)),color-stop(0.5, rgba(0,0,0,.8)),color-stop(0.6, rgba(0,0,0,.4)),color-stop(1, rgba(0,0,0,.4)));
+
+		-moz-background-clip: text;
+		-webkit-background-clip: text;
+		-moz-text-fill-color: transparent;
+		-webkit-text-fill-color: transparent;
+		-webkit-animation: slidetounlock 4s infinite;
+		.txt{
+			margin-left: 10px;
+		}
+		#slider {
+			cursor: move;
+			border-radius: 10px;
+			-moz-text-fill-color: currentcolor;
+			-webkit-text-fill-color: currentcolor;
+			width: 80px;
+			height: 60px;
+			line-height: 60px;
+			font-size: 30px;
+			display: inline-block;
+			vertical-align: middle;
+			text-align: center;
+
+			border: 2px solid @pl-link;
+			color: @pl-link;
+			&:hover,
+			&:active{
+				background: rgba(0,0,0,.1);
+			}
+		}
+	}
+}
+
+/*@media (max-width: @resPortraitTablet) {
+	.dms-signup{
+		display: none;
+	}
+}
+*/
+
+
+
+@-webkit-keyframes slidetounlock {
+	0% {
+		background-position: -175px 0;
+	}
+	100%{
+		background-position: 175px 0;
+	}
+}
+
+
+
+
+
+
+#page .get-pl-email{
+	font-size: 15px;
+	line-height: 1.5em;
+	height: 45px;
+	padding: 4px 10px;
+	margin: 0;
+	vertical-align: middle;
+	width: 210px;
+	margin-right: 15px;
+	margin: 5px;
+	border-radius: 5px;
+}
+.pl-send-email{
+	margin: 5px;
+}
+.dms-signup{
+	position: relative;
+	text-align: center;
+	.reply-text{
+		margin: 0;
+
+		.saving{
+			margin-bottom: 10px;
+			font-weight: 600;
+			display: none;
+		}
+
+	}
+
+
+	.signup-subtext{
+		font-size: 11px;
+		clear: both;
+		text-align: center;
+		margin: 0;
+	}
+
+	form{
+		margin: 0;
+	}
+
+}

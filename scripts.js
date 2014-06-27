@@ -1,5 +1,5 @@
 !function ($) {
-	function plIsEmail(email) {
+	function plSignupIsEmail(email) {
 	  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	  return regex.test(email);
 	}
@@ -88,7 +88,7 @@
 					var theButton = $(this)
 					,	email = $('.get-pl-email.the-email').val() || false
 
-					if( ! email || ! plIsEmail(email) ){
+					if( ! email || ! plSignupIsEmail(email) ){
 						var msg
 
 						if( ! email ){

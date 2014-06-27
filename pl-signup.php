@@ -1,8 +1,12 @@
 <?php
 /*
 Plugin Name: PageLines Signup
+Author: PageLines
+Author URI: http://www.pagelines.com
+Description: Adds a slider type email subscription button. Emails will be auto added to a MailChimp list using AJAX
 Version: 0.2
 PageLines: true
+V3: true
 Section: true
 Class Name: DMS_Signup
 */
@@ -56,7 +60,7 @@ class DMS_Signup extends PageLinesSection{
         array(
           'type'	=> 'multi',
           'title'  => 'MailChimp Integration',
-          'help'    => 'MailChimp.....',
+          'ref'    => 'More than 6 million people use MailChimp to create, send, and track email newsletters. Whether you are self-employed, you manage projects for clients, or you work for a Fortune 500 company, MailChimp has features and integrations that will suit your email marketing needs.<br /><br />Create signup forms that match your brand\'s look and feel, and send your subscribers product updates, event invitations, announcements, or editorial content. Use our reports to improve your campaigns and learn more about your readers. Best of all? MailChimp is free for lists of up to 2,000 subscribers.<br /><br /><a target="_blank" href="http://eepurl.com/XT6lj">Click here to get a free account</a>',
           'col'    => 2,
           'opts'  => array(
             array(
@@ -156,7 +160,7 @@ class DMS_Signup extends PageLinesSection{
       include_once( 'lib.mailchimp.php' );
 
       if( pl_setting( 'dms_signup_mailchimp_api' ) && pl_setting( 'dms_signup_mailchimp_listid' ) ) {
-        $MailChimp = new MailChimp( pl_setting( 'dms_signup_mailchimp_api' ) );
+        $MailChimp = new PLMailChimp( pl_setting( 'dms_signup_mailchimp_api' ) );
         $send = $MailChimp->call('lists/subscribe', array(
                   'id'                => pl_setting( 'dms_signup_mailchimp_listid' ),
                   'email'             => array('email'=>$email),

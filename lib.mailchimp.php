@@ -1,5 +1,5 @@
 <?php
-class MailChimp
+class PLMailChimp
 {
     private $api_key;
     private $api_endpoint = 'https://<dc>.api.mailchimp.com/2.0';

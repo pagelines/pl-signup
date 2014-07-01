@@ -32,6 +32,8 @@
 				$('.drag-slider').hide()
 				$('.reply-text').show()
 				return false
+			} else {
+				$('.drag-slider').show()
 			}
 				
 

@@ -129,8 +129,8 @@ class DMS_Signup extends PageLinesSection{
 		$subscribe_btn_theme = $this->opt( 'dms_submit_btn_theme', array( 'default' => 'btn-primary') );
 		?>
 		<div class="dms-signup dms-signup-light">
-			<div class="drag-slider">				
-				<div class="drag-well"><h2><strong id="slider" class="the-slider"><i class="icon icon-long-arrow-right"></i></strong> <?php echo $subscribe_btn_text; ?></h2></div>
+			<div class="drag-slider pl-animation-group" style="display: none;">				
+				<div class="drag-well pl-animation pla-from-bottom"><h2><strong id="slider" class="the-slider"><i class="icon icon-long-arrow-right"></i></strong> <?php echo $subscribe_btn_text; ?></h2></div>
 			</div>
 			<div class="reply-text" style="display: none;">
 				<div class="saving"></div>

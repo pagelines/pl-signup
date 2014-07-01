@@ -1,27 +1,39 @@
 !function ($) {
 	function plSignupIsEmail(email) {
-	  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-	  return regex.test(email);
+		var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		return regex.test(email);
 	}
 
 	jQuery(document).ready(function() {
 
 		var text = $(".dms-signup .drag-well h2").text().length || 0
-		if( text > 15 && text < 25 ) {
+
+		if( text > 18 && text < 25 ) {
 			$(".dms-signup .drag-well h2").fitText(1.5, { maxFontSize: '45px' });
 		} else if( text > 25 && text < 35 ) {
 			$(".dms-signup .drag-well h2").fitText(1.7, { maxFontSize: '45px' });
 		} else if( text > 35 ) {
 			$(".dms-signup .drag-well h2").fitText(2.1, { maxFontSize: '45px' });
 		}
-
-
+		
 		$('.dms-signup').each(function(){
+
+			
 			var signUp 		= $(this)
 			,	well 		= signUp.find('.drag-well')
 			,	sldr 		= signUp.find('.the-slider')
 			,	fullSldr 	= $('.drag-slider')
 			,	pix			= 175
+			,	disabled	= window.dmssignupajax.slider || false
+			
+			console.log(disabled)
+			
+			if( 1 == disabled ) {
+				$('.drag-slider').hide()
+				$('.reply-text').show()
+				return false
+			}
+				
 
 			sldr.draggable({
 				axis: 'x',
@@ -73,7 +85,6 @@
 			    this.addEventListener( 'webkitTransitionEnd', function( event ) { this.style.webkitTransition = 'none'; }, false );
 			    this.style.webkitTransform = 'translateX(0px)';
 			}, false);
-
 		})
 
 			$(".get-pl-email").keypress(function(event) {
@@ -84,71 +95,55 @@
 			});
 
 			$('.pl-send-email').on('click', function(){
+				var theButton = $(this)
+				,	email = $('.get-pl-email.the-email').val() || false
 
-					var theButton = $(this)
-					,	email = $('.get-pl-email.the-email').val() || false
-
-					if( ! email || ! plSignupIsEmail(email) ){
-						var msg
-
-						if( ! email ){
-
-							msg = '<i class="icon icon-warning"></i> Please enter an email.'
-
-						} else if ( ! plIsEmail( email ) ){
-							msg = '<i class="icon icon-warning"></i> Please enter valid email.'
-						}
-
-						$('.reply-text .saving')
-							.html( msg )
-							.slideDown()
-
-						setTimeout(function(){
-							$('.reply-text .saving').slideUp()
+				if( ! email || ! plSignupIsEmail(email) ){
+					var msg
+					if( ! email ){
+						msg = '<i class="icon icon-warning"></i> Please enter an email.'
+					} else if ( ! plIsEmail( email ) ){
+						msg = '<i class="icon icon-warning"></i> Please enter valid email.'
+					}
+					$('.reply-text .saving')
+					.html( msg )
+					.slideDown()
+					setTimeout(function(){
+						$('.reply-text .saving').slideUp()
 						} , 2500)
-
-						return;
+						return
 					}
 
 					$.ajax({
 						type: 'POST'
-					  	, url: window.dmssignupajax.url
+						, url: window.dmssignupajax.url
 						, data: {
 							action: 'pl_ajax_dms_subscribe'
 							, email: email
 						}
 						, beforeSend: function(){
 							$('.reply-text .saving')
-								.html(window.dmssignupajax.sending).slideDown()
-
+							.html(window.dmssignupajax.sending).slideDown()
 						}
 						, error: function( response ){
-              $('.first-steps').hide()
+							$('.first-steps').hide()
 							$('.reply-text .saving').html('AJAX Error :/')
 						}
 						, success: function(response){
-
-							console.log( response )
 							var rsp	= $.parseJSON( response )
 							,  email = rsp.email || ''
-              ,  error = rsp.error || false
+							,  error = rsp.error || false
 							,  responseContainer = $('.reply-text .saving')
-              ,  response = ''
-
-              if( ! error ) {
-                response = window.dmssignupajax.replytxt.replace('[email]',email)
-              } else {
-                reponse = error
-              }
-
+							,  response = ''
+							if( ! error ) {
+								response = window.dmssignupajax.replytxt.replace('[email]',email)
+							} else {
+								reponse = error
+							}
 							$('.first-steps').hide()
-              responseContainer.html( response )
+							responseContainer.html( response )
 						}
 					})
-
+				})
 			})
-
-
-
-	})
 }(window.jQuery);

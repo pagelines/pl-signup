@@ -9,6 +9,7 @@ PageLines: true
 V3: true
 Section: true
 Class Name: DMS_Signup
+Filter: social
 */
 
 // early bail if were not in dms.

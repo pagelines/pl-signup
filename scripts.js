@@ -15,19 +15,19 @@
 		} else if( text > 35 ) {
 			$(".dms-signup .drag-well h2").fitText(2.1, { maxFontSize: '45px' });
 		}
-		
+
 		$('.dms-signup').each(function(){
 
-			
+
 			var signUp 		= $(this)
 			,	well 		= signUp.find('.drag-well')
 			,	sldr 		= signUp.find('.the-slider')
 			,	fullSldr 	= $('.drag-slider')
 			,	pix			= 175
 			,	disabled	= window.dmssignupajax.slider || false
-			
+
 			console.log(disabled)
-			
+
 			if( 1 == disabled ) {
 				$('.drag-slider').hide()
 				$('.reply-text').show()
@@ -35,7 +35,7 @@
 			} else {
 				$('.drag-slider').show()
 			}
-				
+
 
 			sldr.draggable({
 				axis: 'x',
@@ -104,7 +104,7 @@
 					var msg
 					if( ! email ){
 						msg = '<i class="icon icon-warning"></i> Please enter an email.'
-					} else if ( ! plIsEmail( email ) ){
+					} else if ( ! plSignupIsEmail( email ) ){
 						msg = '<i class="icon icon-warning"></i> Please enter valid email.'
 					}
 					$('.reply-text .saving')
